@@ -2,7 +2,7 @@
 .claude/mcp.json
 
 # Cleaned data exports (regeneratable from Snowflake; kept out of git for size)
-outputs/**/cleaned_data/*.csv
+outputs/**/cleaned_data/
 
 # OS / editor cruft
 .DS_Store
