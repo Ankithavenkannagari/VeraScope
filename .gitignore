@@ -1,0 +1,19 @@
+# Secrets - never commit real MCP/Snowflake credentials
+.claude/mcp.json
+
+# Cleaned data exports (regeneratable from Snowflake; kept out of git for size)
+outputs/**/cleaned_data/*.csv
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node (in case tooling is added later)
+node_modules/

@@ -1,0 +1,29 @@
+{
+  "mcpServers": {
+    "snowflake_olist": {
+      "command": "C:\\path\\to\\mcp_snowflake_server.exe",
+      "args": [
+        "--account", "<your-snowflake-account>",
+        "--warehouse", "COMPUTE_WH",
+        "--user", "<your-username>",
+        "--password", "<your-password>",
+        "--role", "ACCOUNTADMIN",
+        "--database", "OLIST_ECOMMERCE",
+        "--schema", "RAW_DATA"
+      ]
+    },
+
+    "snowflake_adven": {
+      "command": "C:\\path\\to\\mcp_snowflake_server.exe",
+      "args": [
+        "--account", "<your-snowflake-account>",
+        "--warehouse", "COMPUTE_WH",
+        "--user", "<your-username>",
+        "--password", "<your-password>",
+        "--role", "ACCOUNTADMIN",
+        "--database", "ADVENTURE_WORKS",
+        "--schema", "DATA"
+      ]
+    }
+  }
+}
