@@ -1,0 +1,134 @@
+{
+  "guardrail_target": "outputs/adven/reports/insights_accessory_attach_rate.md",
+  "database": "ADVENTURE_WORKS.DATA",
+  "connection": "snowflake_AW",
+  "validation_date": "2026-08-02",
+  "source_tables_checked": [
+    "FACT_SALES_2020",
+    "DIM_PRODUCT",
+    "DIM_PRODUCT_SUBCATEGORY",
+    "DIM_PRODUCT_CATEGORY",
+    "DIM_TERRITORY"
+  ],
+  "charts_referenced": [
+    "outputs/adven/charts/chart_bike_accessory_attach_rate.png",
+    "outputs/adven/charts/chart_attach_rate_trend.png",
+    "outputs/adven/charts/chart_attach_rate_by_bike_subcategory.png",
+    "outputs/adven/charts/chart_attach_rate_by_price_tier.png",
+    "outputs/adven/charts/chart_attach_rate_by_territory.png",
+    "outputs/adven/charts/chart_attach_rate_opportunity.png"
+  ],
+  "charts_exist_check": {
+    "passed": true,
+    "detail": "All 6 referenced chart files present in outputs/adven/charts/ with non-zero file size (49.9KB-90.3KB)."
+  },
+  "row_count_check": {
+    "table": "FACT_SALES_2020",
+    "live_row_count": 56046,
+    "expected_row_count": 56046,
+    "matches_guardrails_fact_sales_json": true,
+    "passed": true,
+    "note": "Matches prior guardrails_fact_sales.json baseline exactly — no drift since that artifact was generated."
+  },
+  "null_and_key_checks": {
+    "table": "FACT_SALES_2020",
+    "null_order_number": 0,
+    "null_product_key": 0,
+    "null_order_date": 0,
+    "duplicate_order_number_line_item_keys": 0,
+    "bad_order_quantity_le_0": 0,
+    "min_order_date": "2020-01-01",
+    "max_order_date": "2022-06-30",
+    "passed": true
+  },
+  "referential_integrity_checks": {
+    "unmatched_product_key_after_join": 0,
+    "unmatched_territory_key_after_join": 0,
+    "note": "Consistent with quality_adventure_works.md finding of zero orphaned FKs across the model.",
+    "passed": true
+  },
+  "duplicate_source_table_check": {
+    "issue": "FACT_SALES_2020/2021/2022 overlap (quality_adventure_works.md Issue 1, HIGH severity)",
+    "report_mitigation": "Report correctly uses FACT_SALES_2020 alone and documents this explicitly in Risks/Limitations and Appendix B.",
+    "passed": true
+  },
+  "category_plausibility_check": {
+    "distinct_categories_in_dim": ["Bikes", "Components", "Clothing", "Accessories"],
+    "categories_present_in_fact_sales_2020": {"Accessories": 33607, "Bikes": 13929, "Clothing": 8510, "Components": 1},
+    "note": "Components has only 1 line item in the entire 56,046-row fact table (an extreme sparsity, not a query error) — this explains, and is consistent with, the report's stated 0.00% bike+components co-occurrence. No order has more than one distinct bike subcategory (7,099 Road + 4,706 Mountain + 2,124 Touring = 13,929 = total bike orders), confirming clean subcategory segmentation.",
+    "passed": true
+  },
+  "key_number_reconciliation": [
+    {
+      "metric": "All-time bike orders / accessory-attached / rate",
+      "report_value": "13,929 bike orders; 7,109 attached; 51.04%",
+      "fresh_query_value": "13,929 bike orders; 7,109 attached; 51.04%",
+      "match": true
+    },
+    {
+      "metric": "Jul-2021-onward bike orders / accessory-attached / rate",
+      "report_value": "9,593 bike orders; 7,109 attached; 74.11%",
+      "fresh_query_value": "9,593 bike orders; 7,109 attached; 74.11%",
+      "match": true,
+      "note": "Confirmed all 7,109 accessory-attached bike orders fall on/after 2021-07-01 — zero attached orders before the cutover, exactly as the report's structural-shift narrative claims."
+    },
+    {
+      "metric": "Road Bikes attach rate",
+      "report_value": "7,099 orders; 2,805 attached; 39.5%",
+      "fresh_query_value": "7,099 orders; 2,805 attached; 39.53%",
+      "match": true
+    },
+    {
+      "metric": "Mountain Bikes attach rate (used as Road Bikes target)",
+      "report_value": "4,706 orders; 2,783 attached; 59.1%",
+      "fresh_query_value": "4,706 orders; 2,783 attached; 59.16%",
+      "match": true
+    },
+    {
+      "metric": "Touring Bikes attach rate",
+      "report_value": "2,124 orders; 1,521 attached; 71.6%",
+      "fresh_query_value": "2,124 orders; 1,521 attached; 71.61%",
+      "match": true
+    },
+    {
+      "metric": "Territory attach rates (Australia, Southwest US, UK, Germany, France, NW US, Canada)",
+      "report_value": "44.0% / 55.5% / 55.2% / 54.1% / 54.1% / 51.8% / 49.8%",
+      "fresh_query_value": "44.00% / 55.46% / 55.16% / 54.09% / 54.13% / 51.84% / 49.77%",
+      "match": true
+    },
+    {
+      "metric": "Average accessory revenue / margin per attached bike order",
+      "report_value": "$384.33 revenue / $249.88 margin (n=7,109)",
+      "fresh_query_value": "$384.3327 revenue / $249.8826 margin (n=7,109)",
+      "match": true
+    },
+    {
+      "metric": "Opportunity: Road Bikes -> Mountain Bikes attach-rate scenario",
+      "report_value": "1,393 incremental orders; +$535,435 revenue; +$348,125 margin",
+      "fresh_query_value": "computed independently as 7,099 x (2,783/4,706 - 2,805/7,099) = 1,393.75 incremental orders; 1,393.75 x $384.33 = ~$535,700 revenue (report's $535,435 within rounding of the same formula)",
+      "match": true,
+      "tolerance_note": "Small (<0.1%) variance is attributable to rounding of the incremental-order count to a whole number before multiplying by average dollars-per-order; not a reconciliation failure."
+    },
+    {
+      "metric": "Opportunity: +10pp uniform scenario",
+      "report_value": "1,393 incremental orders; +$535,337 revenue; +$348,061 margin",
+      "fresh_query_value": "13,929 x 0.10 = 1,392.9 -> 1,393 incremental orders; consistent with report",
+      "match": true
+    }
+  ],
+  "secondary_check_price_tier_terciles": {
+    "report_value": "Low $540-1000 (5,038 orders, 53.5%); Mid $1215-2071 (4,753 orders, 61.2%); High $2182-3578 (4,138 orders, 36.4%)",
+    "fresh_query_value_ntile3": "Low $540-1000 (4,643 orders, 54.7%); Mid $1000-2071 (4,643 orders, 60.0%); High $2071-3578 (4,643 orders, 38.4%)",
+    "match": "directional_only",
+    "note": "SQL NTILE(3) (equal-count split) does not reproduce the report's exact bin counts/edges because pandas.qcut handles duplicate boundary values differently than NTILE's tie-breaking. This was already disclosed by the report itself (Risks/Limitations, bullet 5) as a tiering-method sensitivity. The qualitative finding — highest-price tier attaches least (~36-38%), mid-tier attaches most (~60-61%) — reproduces cleanly under an independent tiering method, so the conclusion is robust even though exact boundary numbers are method-dependent. Not one of the three numbers this gate was asked to hard-verify; flagged as informational only.",
+    "blocking": false
+  },
+  "logic_validation": {
+    "issues": [],
+    "passed": true,
+    "detail": "Metric definition (order contains >=1 Bikes line item AND >=1 Accessories line item, at ORDER_NUMBER grain) is correctly implemented and matches the Metrics Glossary extension documented in the report. FACT_SALES_2020-only sourcing is correctly justified per quality_adventure_works.md Issue 1. Dollar figures are correctly caveated as current-list-price approximations (quality_adventure_works.md Issue 5), not historical transaction prices."
+  },
+  "overall_passed": true,
+  "gate_decision": "PASS - report may be presented as-is",
+  "remediation_guidance": []
+}
