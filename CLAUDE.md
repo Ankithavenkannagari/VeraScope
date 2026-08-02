@@ -29,6 +29,7 @@ When a user asks a question about data:
 5. Follow a deterministic routing order.
    - If no EDA exists, or the user requests an overview: delegate to the EDA Agent first.
    - If the request involves validation, cleaning, deduplication, or trustworthiness concerns: delegate to the Data Quality Agent.
+   - If the request is a final QA gate for data, reports, or cleaned outputs: delegate to the Guardrails Agent before finalizing anything.
    - For analytical questions or business interpretation: delegate to the Insight Generator Agent.
    - If the request involves forecasting, future trends, or scenario planning: delegate to the Forecasting Agent.
    - If the request involves unusual patterns, outliers, or anomaly investigation: delegate to the Anomaly Detection Agent.
@@ -43,6 +44,7 @@ When a user asks a question about data:
 
 7. For reporting:
    - Apply Reporting Style standards.
+   - After any report is generated, run the guardrails wrapper automatically to validate the input data and store a guardrails report artifact.
 
 8. Always save outputs to the correct database-specific folder.
 

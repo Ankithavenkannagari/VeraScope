@@ -1,0 +1,33 @@
+{
+  "input_file": "outputs\\olist\\cleaned_data\\cleaned_products.csv",
+  "row_count": 32951,
+  "expected_row_count": 1,
+  "row_count_ok": true,
+  "null_summary": {
+    "product_id": {
+      "null_count": 32951,
+      "null_rate": 1.0
+    },
+    "product_name": {
+      "null_count": 32951,
+      "null_rate": 1.0
+    }
+  },
+  "range_results": [
+    {
+      "column": "price",
+      "passed": true,
+      "failure_count": 0,
+      "sample_failures": []
+    }
+  ],
+  "logic_validation": {
+    "issues": [
+      "required column missing: product_id",
+      "required column missing: product_name",
+      "range check references unknown column: price"
+    ],
+    "passed": false
+  },
+  "overall_passed": true
+}

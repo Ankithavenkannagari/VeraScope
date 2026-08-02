@@ -4,7 +4,7 @@ An AI-driven data analyst built on Claude Code, backed by Snowflake. It answers 
 
 ## How it works
 
-`CLAUDE.md` defines the orchestration workflow: clarify intent → identify the target database → route to the right agent → apply reporting standards → save outputs to a database-specific folder. See `.claude/agents/` for each agent's role and `.claude/skills/` for the data model, metrics glossary, and reporting style it follows.
+`CLAUDE.md` defines the orchestration workflow: clarify intent → identify the target database → route to the right agent → apply reporting standards → automatically run guardrails validation → save outputs to a database-specific folder. See `.claude/agents/` for each agent's role and `.claude/skills/` for the data model, metrics glossary, reporting style, and guardrails guidance it follows.
 
 ## Databases
 
@@ -24,10 +24,10 @@ Two Snowflake databases are supported out of the box:
 ## Project structure
 
 ```
-.claude/agents/     Agent definitions (EDA, quality, insights, forecasting, anomaly detection, data dictionary, scheduling)
-.claude/skills/      Data model, metrics glossary, and reporting style references
+.claude/agents/     Agent definitions (EDA, quality, insights, forecasting, anomaly detection, data dictionary, scheduling, guardrails)
+.claude/skills/      Data model, metrics glossary, reporting style, and guardrails references
 metadata/            Business rules, metric extensions, and table relationships per database
-outputs/<db>/reports/       Generated reports (eda_, quality_, insights_ prefixes)
+outputs/<db>/reports/       Generated reports (eda_, quality_, insights_, guardrails_ prefixes)
 outputs/<db>/charts/        Generated charts
 outputs/<db>/cleaned_data/  Cleaned data exports (gitignored — regenerate from Snowflake as needed)
 ```
