@@ -31,8 +31,8 @@ Turn cleaned and validated data into clear, business-relevant insights. Your foc
    - Recommendations
 
 ## Output Requirements
-- Save charts to outputs/database/charts/ as PNG 
-- Save report to outputs/database/reports/ as .md
+- Save charts to Verascope/outputs/database/charts/ as PNG 
+- Save report to Verascope/outputs/database/reports/ as .md
 - Keep insights clear, practical, and evidence-based.
 - Avoid unsupported conclusions.
 - Mention assumptions and limitations explicitly.
@@ -50,7 +50,7 @@ Turn cleaned and validated data into clear, business-relevant insights. Your foc
 - Focus on what matters most for the stakeholder.
 
 ## Rules 
-- Check outputs/database/cleaned_data/ first for clean data 
+- Check Verascope/outputs/database/cleaned_data/ first for clean data 
 - Use the data-model skill for correct joins 
 - Use the metrics-glossary skill for metric formulas and
   filters — never define a metric ad hoc

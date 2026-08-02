@@ -85,10 +85,13 @@ CLAUDE.md                    Orchestration rules — routing, standards, databas
                                anomaly detection, data dictionary, scheduling, guardrails)
 .claude/skills/                Shared references every agent must follow:
                                data model, metrics glossary, reporting style, guardrails
-metadata/<db>/                Business rules, metric extensions, table relationships per database
-outputs/<db>/reports/          Generated reports (eda_, quality_, insights_, guardrails_ prefixes)
-outputs/<db>/charts/           Generated charts
-outputs/<db>/cleaned_data/     Cleaned data exports (gitignored — regenerate from Snowflake)
+Verascope/metadata/<db>/      Business rules, metric extensions, table relationships per database
+Verascope/tools/               Guardrails validator and report wrapper scripts
+Verascope/tests/               Test suite for the guardrails tooling
+Verascope/outputs/<db>/reports/          Generated reports (eda_, quality_, insights_, guardrails_ prefixes)
+Verascope/outputs/<db>/charts/           Generated charts
+Verascope/outputs/<db>/cleaned_data/     Cleaned data exports (gitignored — regenerate from Snowflake)
+working/                      Scratch space for ad-hoc scripts (gitignored, kept empty in the repo)
 ```
 
 ## Databases

@@ -11,7 +11,7 @@ description: Use this skill when generating any output files, charts, or reports
 - Use ## for section headers
 - Include actual numbers, not just descriptions
 - End with Key Takeaways (3-5 bullet points)
-- Save all reports to outputs/reports/
+- Save all reports to Verascope/outputs/reports/
 
 ## Charts
 - Use seaborn with the muted color palette
@@ -19,9 +19,9 @@ description: Use this skill when generating any output files, charts, or reports
 - Label both axes clearly
 - Add value labels on bar charts
 - Use figsize=(10, 6) as default size
-- Save as PNG to outputs/charts/
+- Save as PNG to Verascope/outputs/charts/
 - Use horizontal bar charts instead of pie charts
 
 ## Data Outputs
-- Save cleaned data as CSV to outputs/cleaned_data/
+- Save cleaned data as CSV to Verascope/outputs/cleaned_data/
 - Include a log of all changes made

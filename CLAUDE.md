@@ -95,15 +95,15 @@ All deliverables must be stored in database-specific folders.
 
 Reports:
 
-outputs/olist/reports/
+Verascope/outputs/olist/reports/
 
 Charts:
 
-outputs/olist/charts/
+Verascope/outputs/olist/charts/
 
 Cleaned Data:
 
-outputs/olist/cleaned_data/
+Verascope/outputs/olist/cleaned_data/
 
 ---
 
@@ -111,15 +111,15 @@ outputs/olist/cleaned_data/
 
 Reports:
 
-outputs/adven/reports/
+Verascope/outputs/adven/reports/
 
 Charts:
 
-outputs/adven/charts/
+Verascope/outputs/adven/charts/
 
 Cleaned Data:
 
-outputs/adven/cleaned_data/
+Verascope/outputs/adven/cleaned_data/
 
 ---
 
@@ -206,7 +206,7 @@ Point-in-time findings — specific counts, current data quality issues, current
 **Reviews**
 - `REVIEWS.REVIEW_ID` is not a reliable primary key — duplicate REVIEW_ID values exist with genuinely different row content (not copy-paste duplicates), so `SELECT DISTINCT` does not fix it.
 - Before any review-score or review-count analysis, deduplicate to one row per `ORDER_ID`, keeping the row with the latest `REVIEW_ANSWER_TIMESTAMP` (tie-break: latest `REVIEW_CREATION_DATE`, then `REVIEW_ID`). In SQL: `QUALIFY ROW_NUMBER() OVER (PARTITION BY ORDER_ID ORDER BY REVIEW_ANSWER_TIMESTAMP DESC NULLS LAST, REVIEW_CREATION_DATE DESC NULLS LAST, REVIEW_ID) = 1`.
-- A cleaned CSV exists at `outputs/olist/cleaned_data/cleaned_reviews.csv`, but it is not queryable from Snowflake — any live query against the raw `REVIEWS` table must apply the QUALIFY logic above inline.
+- A cleaned CSV exists at `Verascope/outputs/olist/cleaned_data/cleaned_reviews.csv`, but it is not queryable from Snowflake — any live query against the raw `REVIEWS` table must apply the QUALIFY logic above inline.
 
 **Products and categories**
 - `PRODUCTS.PRODUCT_CATEGORY_NAME` has null values and values with no match in `CATEGORY_TRANSLATION`. Use a `LEFT JOIN` to `CATEGORY_TRANSLATION` and `COALESCE` the English name to `'unknown_category'` — an `INNER JOIN` silently drops revenue from any category-level report instead of bucketing it.

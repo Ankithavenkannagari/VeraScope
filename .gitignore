@@ -2,7 +2,10 @@
 .claude/mcp.json
 
 # Cleaned data exports (regeneratable from Snowflake; kept out of git for size)
-outputs/**/cleaned_data/
+Verascope/outputs/**/cleaned_data/
+
+# Scratch / ad-hoc working files (not part of core deliverables)
+working/
 
 # OS / editor cruft
 .DS_Store
