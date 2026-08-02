@@ -6,7 +6,7 @@ description: Use this skill whenever an agent needs to understand the schema, va
 # Data Model Skill
 
 ## Purpose
-Use this skill whenever an agent needs to understand the schema, validate joins, and write correct SQL for the AI Analyst project.
+Use this skill whenever an agent needs to understand the schema, validate joins, and write correct SQL for the Verascope project.
 
 This skill applies to both databases used by the project:
 - OLIST_ECOMMERCE / RAW_DATA

@@ -3,7 +3,7 @@ name: metrics-glossary
 description: Use this skill to define, compute, and report business metrics (revenue, order count, AOV, review score, cancellation/return rate, etc.) consistently for the Olist and Adventure Works databases. Never define a metric ad hoc — check here first.
 ---
 
-# Metrics Guide for AI Analyst
+# Metrics Guide for Verascope
 
 ## Purpose
 Use this guide to define, compute, and report business metrics consistently for both databases used in this project.
