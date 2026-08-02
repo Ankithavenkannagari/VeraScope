@@ -37,8 +37,9 @@ Most "chat with your data" tools produce a plausible-sounding answer with no vis
 1. Install the Snowflake MCP server (`mcp_snowflake_server`).
 2. Copy `.claude/mcp.json.example` to `.claude/mcp.json` and fill in your Snowflake account, username, and password.
    `.claude/mcp.json` is gitignored — **never commit real credentials.**
-3. Open the project in Claude Code.
-4. Ask a data question in plain English. The orchestrator identifies the target database, picks the right agent(s), and applies the reporting and guardrails standards automatically.
+3. Create a virtual environment and install Python dependencies: `pip install -r requirements.txt` (used for the guardrails test suite and chart generation).
+4. Open the project in Claude Code.
+5. Ask a data question in plain English. The orchestrator identifies the target database, picks the right agent(s), and applies the reporting and guardrails standards automatically.
 
 ```
 "What's driving the drop in reviews this quarter?"
