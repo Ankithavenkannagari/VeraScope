@@ -105,15 +105,17 @@ def main() -> None:
     range_results = check_ranges(rows, checks)
     logic_validation = validate_logic(rows, args.expected_row_count, args.required_columns, checks)
 
+    row_count_ok = len(rows) >= args.expected_row_count if args.expected_row_count > 0 else True
+
     payload = {
         "input_file": str(input_path),
         "row_count": len(rows),
         "expected_row_count": args.expected_row_count,
-        "row_count_ok": len(rows) >= args.expected_row_count if args.expected_row_count > 0 else True,
+        "row_count_ok": row_count_ok,
         "null_summary": null_summary,
         "range_results": range_results,
         "logic_validation": logic_validation,
-        "overall_passed": len(rows) >= args.expected_row_count if args.expected_row_count > 0 else True and logic_validation["passed"] and all(item["passed"] for item in range_results),
+        "overall_passed": row_count_ok and logic_validation["passed"] and all(item["passed"] for item in range_results),
     }
 
     write_report(output_path, payload)

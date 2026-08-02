@@ -79,6 +79,46 @@ def test_validator_reports_expected_pass_and_fail(tmp_path: Path) -> None:
     assert payload2["range_results"][0]["passed"] is False
 
 
+def test_overall_passed_reflects_logic_and_range_failures(tmp_path: Path) -> None:
+    # Regression test: row-count check alone used to short-circuit overall_passed
+    # via an operator-precedence bug, so a dataset missing required columns (or
+    # failing a range check) could still report overall_passed=True as long as
+    # the row count met --expected-row-count.
+    sample = tmp_path / "sample.csv"
+    write_csv(sample, [{"id": "1", "value": "10"}, {"id": "2", "value": "20"}])
+    output = tmp_path / "report.json"
+
+    subprocess.run(
+        [
+            sys.executable,
+            str(SCRIPT),
+            "--input",
+            str(sample),
+            "--output",
+            str(output),
+            "--expected-row-count",
+            "1",
+            "--required-columns",
+            "id",
+            "value",
+            "missing_column",
+            "--null-columns",
+            "id",
+            "value",
+            "--range-check",
+            "value:0:30",
+            "--range-check",
+            "unknown_column:0:30",
+        ],
+        check=True,
+    )
+
+    payload = json.loads(output.read_text(encoding="utf-8"))
+    assert payload["row_count_ok"] is True
+    assert payload["logic_validation"]["passed"] is False
+    assert payload["overall_passed"] is False
+
+
 def test_report_wrapper_generates_guardrail_artifacts(tmp_path: Path) -> None:
     sample = tmp_path / "sample.csv"
     write_csv(sample, [{"id": "1", "value": "10"}, {"id": "2", "value": "20"}])
