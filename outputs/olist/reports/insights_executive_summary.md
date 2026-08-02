@@ -100,7 +100,7 @@ Per `quality_olist_ecommerce.md` and `cleaned_data_log.md` (re-verified live aga
 - **REVIEWS deduplicated to one row per order** (kept latest `REVIEW_ANSWER_TIMESTAMP`), resolving 789 duplicate REVIEW_ID values and 547 multi-review orders. All review-score figures in this report and its source analyses use that cleaned grain.
 - **CUSTOMER_UNIQUE_ID used throughout** for customer counts and repeat-purchase analysis, not the order-scoped CUSTOMER_ID (99,441 CUSTOMER_ID rows represent only 96,096 real people).
 - **PRODUCTS category cleaned**: 610 null-category + 13 unmatched-translation products bucketed as "unknown_category" rather than dropped (1,627 line items, ~1.4% of revenue).
-- **GEOLOCATION aggregated** to one row per zip prefix (19,015 rows, from 1,000,163) for any future geographic join — not needed for the analyses in this report, which used `CUSTOMER_STATE`/`SELLER_STATE` directly.
+- **GEOLOCATION aggregated** to one row per zip prefix (19,005 rows, from 1,000,163; 10 further zips dropped on 2026-08-02 after a guardrails check found their averaged coordinates fell outside Brazil's territorial bounds — see `cleaned_data_log.md`) for any future geographic join — not needed for the analyses in this report, which used `CUSTOMER_STATE`/`SELLER_STATE` directly.
 - No row-level defects were found in ORDERS, ORDER_ITEMS, SELLERS, or PAYMENTS (aside from 9 plausible R$0 voucher/not_defined payment rows) — these tables were left untouched.
 
 ## Risks / Limitations

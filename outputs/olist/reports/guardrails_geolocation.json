@@ -1,0 +1,47 @@
+{
+  "input_file": "outputs\\olist\\cleaned_data\\cleaned_geolocation.csv",
+  "row_count": 19005,
+  "expected_row_count": 19005,
+  "row_count_ok": true,
+  "null_summary": {
+    "GEOLOCATION_ZIP_CODE_PREFIX": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "GEOLOCATION_LAT": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "GEOLOCATION_LNG": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "GEOLOCATION_CITY": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "GEOLOCATION_STATE": {
+      "null_count": 0,
+      "null_rate": 0.0
+    }
+  },
+  "range_results": [
+    {
+      "column": "GEOLOCATION_LAT",
+      "passed": true,
+      "failure_count": 0,
+      "sample_failures": []
+    },
+    {
+      "column": "GEOLOCATION_LNG",
+      "passed": true,
+      "failure_count": 0,
+      "sample_failures": []
+    }
+  ],
+  "logic_validation": {
+    "issues": [],
+    "passed": true
+  },
+  "overall_passed": true
+}

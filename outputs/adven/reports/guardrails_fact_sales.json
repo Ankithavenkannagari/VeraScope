@@ -1,0 +1,53 @@
+{
+  "input_file": "outputs\\adven\\cleaned_data\\cleaned_fact_sales.csv",
+  "row_count": 56046,
+  "expected_row_count": 56046,
+  "row_count_ok": true,
+  "null_summary": {
+    "ORDER_DATE": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "STOCK_DATE": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "ORDER_NUMBER": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "PRODUCT_KEY": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "CUSTOMER_KEY": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "TERRITORY_KEY": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "ORDER_LINE_ITEM": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "ORDER_QUANTITY": {
+      "null_count": 0,
+      "null_rate": 0.0
+    }
+  },
+  "range_results": [
+    {
+      "column": "ORDER_QUANTITY",
+      "passed": true,
+      "failure_count": 0,
+      "sample_failures": []
+    }
+  ],
+  "logic_validation": {
+    "issues": [],
+    "passed": true
+  },
+  "overall_passed": true
+}

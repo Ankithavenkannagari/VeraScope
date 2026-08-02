@@ -1,0 +1,49 @@
+{
+  "input_file": "outputs\\olist\\cleaned_data\\cleaned_reviews.csv",
+  "row_count": 98673,
+  "expected_row_count": 98673,
+  "row_count_ok": true,
+  "null_summary": {
+    "REVIEW_ID": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "ORDER_ID": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "REVIEW_SCORE": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "REVIEW_COMMENT_TITLE": {
+      "null_count": 87125,
+      "null_rate": 0.883
+    },
+    "REVIEW_COMMENT_MESSAGE": {
+      "null_count": 57925,
+      "null_rate": 0.587
+    },
+    "REVIEW_CREATION_DATE": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "REVIEW_ANSWER_TIMESTAMP": {
+      "null_count": 0,
+      "null_rate": 0.0
+    }
+  },
+  "range_results": [
+    {
+      "column": "REVIEW_SCORE",
+      "passed": true,
+      "failure_count": 0,
+      "sample_failures": []
+    }
+  ],
+  "logic_validation": {
+    "issues": [],
+    "passed": true
+  },
+  "overall_passed": true
+}

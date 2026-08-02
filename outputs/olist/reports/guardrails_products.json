@@ -1,33 +1,73 @@
 {
   "input_file": "outputs\\olist\\cleaned_data\\cleaned_products.csv",
   "row_count": 32951,
-  "expected_row_count": 1,
+  "expected_row_count": 32951,
   "row_count_ok": true,
   "null_summary": {
-    "product_id": {
-      "null_count": 32951,
-      "null_rate": 1.0
+    "PRODUCT_ID": {
+      "null_count": 0,
+      "null_rate": 0.0
     },
-    "product_name": {
-      "null_count": 32951,
-      "null_rate": 1.0
+    "PRODUCT_CATEGORY_NAME_CLEAN": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "PRODUCT_WEIGHT_G": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "PRODUCT_LENGTH_CM": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "PRODUCT_HEIGHT_CM": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "PRODUCT_WIDTH_CM": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "PRODUCT_PHOTOS_QTY": {
+      "null_count": 0,
+      "null_rate": 0.0
     }
   },
   "range_results": [
     {
-      "column": "price",
+      "column": "PRODUCT_WEIGHT_G",
+      "passed": true,
+      "failure_count": 0,
+      "sample_failures": []
+    },
+    {
+      "column": "PRODUCT_LENGTH_CM",
+      "passed": true,
+      "failure_count": 0,
+      "sample_failures": []
+    },
+    {
+      "column": "PRODUCT_HEIGHT_CM",
+      "passed": true,
+      "failure_count": 0,
+      "sample_failures": []
+    },
+    {
+      "column": "PRODUCT_WIDTH_CM",
+      "passed": true,
+      "failure_count": 0,
+      "sample_failures": []
+    },
+    {
+      "column": "PRODUCT_PHOTOS_QTY",
       "passed": true,
       "failure_count": 0,
       "sample_failures": []
     }
   ],
   "logic_validation": {
-    "issues": [
-      "required column missing: product_id",
-      "required column missing: product_name",
-      "range check references unknown column: price"
-    ],
-    "passed": false
+    "issues": [],
+    "passed": true
   },
   "overall_passed": true
 }
