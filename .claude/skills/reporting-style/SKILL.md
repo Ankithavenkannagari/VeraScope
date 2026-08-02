@@ -1,8 +1,7 @@
---- 
-name: reporting-style 
-description: Use this skill when generating any output 
-files, charts, or reports. Defines formatting standards. 
---- 
+---
+name: reporting-style
+description: Use this skill when generating any output files, charts, or reports. Defines formatting standards.
+---
 
 # Reporting Style Guide
 

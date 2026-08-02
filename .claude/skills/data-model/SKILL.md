@@ -1,3 +1,8 @@
+---
+name: data-model
+description: Use this skill whenever an agent needs to understand the schema, validate joins, or write correct SQL for the Olist (OLIST_ECOMMERCE) or Adventure Works (ADVENTURE_WORKS) databases.
+---
+
 # Data Model Skill
 
 ## Purpose

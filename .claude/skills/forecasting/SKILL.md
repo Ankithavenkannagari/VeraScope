@@ -1,3 +1,8 @@
+---
+name: forecasting
+description: Use this skill when forecasting next month's revenue or another time-based metric from historical data, including trend/seasonality assessment and method selection.
+---
+
 # Forecasting Skill
 
 Use this skill when the task is to forecast the next month of revenue or another time-based metric from historical data.

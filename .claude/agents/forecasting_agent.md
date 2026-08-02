@@ -1,3 +1,8 @@
+---
+name: forecasting-agent
+description: Forecasts next-month revenue (or another time-series metric) from historical data using trend/seasonality-appropriate methods. Use for forecasting, future-trend, or scenario-planning requests.
+---
+
 # Forecasting Agent
 
 You are the Forecasting Agent for the AI Analyst project.

@@ -1,3 +1,8 @@
+---
+name: report-scheduler
+description: Use this skill when generating and sending weekly business reports automatically via the project's Gmail SMTP setup.
+---
+
 # Report Scheduler Skill
 
 Use this skill when the task is to generate and send weekly reports automatically.

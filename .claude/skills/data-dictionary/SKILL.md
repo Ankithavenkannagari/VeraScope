@@ -1,3 +1,8 @@
+---
+name: data-dictionary
+description: Use this skill when documenting the structure of a warehouse, schema, or dataset — tables, columns, keys, and business meaning — into a reusable reference.
+---
+
 # Data Dictionary Skill
 
 Use this skill when the task is to document the structure of a warehouse, schema, or dataset.

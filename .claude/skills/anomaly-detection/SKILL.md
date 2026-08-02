@@ -1,3 +1,8 @@
+---
+name: anomaly-detection
+description: Use this skill when detecting unusual patterns in daily business data — spikes, drops, irregular volatility, missing periods, or deviations from baseline — before reporting or forecasting.
+---
+
 # Anomaly Detection Skill
 
 Use this skill when the task is to detect unusual patterns in daily data.
